@@ -1,21 +1,21 @@
+use std::num::ParseIntError;
+
 use color_eyre::Result;
 
 pub fn run() -> Result<()> {
     let data = std::fs::read_to_string("inputs/day1_1.txt")?;
 
-    let mut calories = Vec::new();
-    let mut current_calories = 0;
-
-    for line in data.lines() {
-        if line.trim().is_empty() {
-            calories.push(current_calories);
-            current_calories = 0;
-            continue;
-        }
-        let calories = line.trim().parse::<u64>()?;
-        current_calories += calories;
-    }
-    calories.push(current_calories);
+    let (mut calories, _) = data.lines()
+        .into_iter()
+        .try_fold((Vec::new(), 0), |(mut vec, acc), line| {
+            if line.trim().is_empty() {
+                vec.push(acc);
+                Ok::<_, ParseIntError>((vec, 0))
+            } else {
+                let cal = line.trim().parse::<u64>()?;
+                Ok((vec, acc + cal))
+            }
+        })?;
 
     let max = calories.iter().max().expect("empty vector?");
     println!("Elf with most calories carries {max} calories");
