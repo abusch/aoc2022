@@ -3,7 +3,7 @@ use std::num::ParseIntError;
 use color_eyre::Result;
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day1_1.txt")?;
+    let data = std::fs::read_to_string("inputs/day1.txt")?;
 
     let (mut calories, _) = data.lines()
         .into_iter()
