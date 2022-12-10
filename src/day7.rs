@@ -99,7 +99,6 @@ impl InodeTable {
     /// Find a directory with the given name under the given parent name and return its inode
     pub fn find_dir(&self, parent: Inode, dir_name: &str) -> Inode {
         if let Some(Entry::Dir { entries, .. }) = self.table.get(&parent) {
-            dbg!(entries);
             entries
                 .iter()
                 .find(|i| {
