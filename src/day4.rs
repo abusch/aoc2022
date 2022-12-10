@@ -1,6 +1,6 @@
 use std::ops::RangeInclusive;
 
-use color_eyre::{eyre::ContextCompat, Result};
+use eyre::{ContextCompat, Result};
 
 pub fn run() -> Result<()> {
     let data = std::fs::read_to_string("inputs/day4.txt")?;

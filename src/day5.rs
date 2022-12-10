@@ -1,6 +1,6 @@
 use std::{collections::VecDeque, fmt::Display};
 
-use color_eyre::{eyre::ContextCompat, Result};
+use eyre::{ContextCompat, Result};
 use once_cell::sync::Lazy;
 use regex::Regex;
 

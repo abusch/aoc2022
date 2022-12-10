@@ -1,6 +1,8 @@
 use std::collections::HashSet;
 
-pub fn run() -> color_eyre::Result<()> {
+use eyre::Result;
+
+pub fn run() -> Result<()> {
     let data = std::fs::read_to_string("inputs/day3.txt")?;
 
     let mut common_items = Vec::new();
@@ -25,7 +27,11 @@ pub fn run() -> color_eyre::Result<()> {
         let set_c = HashSet::from_iter(group[2].as_bytes().iter().copied());
 
         let intersection_a_b = set_a.intersection(&set_b).copied().collect::<HashSet<_>>();
-        let intersection = intersection_a_b.intersection(&set_c).copied().next().unwrap();
+        let intersection = intersection_a_b
+            .intersection(&set_c)
+            .copied()
+            .next()
+            .unwrap();
 
         badges.push(intersection);
     }

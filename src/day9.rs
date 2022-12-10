@@ -1,6 +1,6 @@
 use std::{collections::HashSet, ops::Sub, str::FromStr};
 
-use color_eyre::{eyre::eyre, Report, Result};
+use eyre::{eyre, Report, Result};
 
 pub fn run() -> Result<()> {
     let data = std::fs::read_to_string("inputs/day9.txt")?;

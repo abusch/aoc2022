@@ -1,6 +1,6 @@
 use std::cmp::Ordering;
 
-use color_eyre::{eyre::eyre, Report, Result};
+use eyre::{eyre, Report, Result};
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]
 enum Shape {

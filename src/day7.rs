@@ -3,7 +3,9 @@ use std::{
     ops::{Deref, DerefMut},
 };
 
-pub fn run() -> color_eyre::Result<()> {
+use eyre::Result;
+
+pub fn run() -> Result<()> {
     let data = std::fs::read_to_string("inputs/day7.txt")?;
 
     let mut shell = Shell::new();

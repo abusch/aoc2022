@@ -1,4 +1,4 @@
-use color_eyre::Result;
+use eyre::Result;
 use itertools::Itertools;
 
 pub fn run() -> Result<()> {
