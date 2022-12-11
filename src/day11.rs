@@ -1,6 +1,8 @@
 use std::{cell::RefCell, collections::VecDeque, str::FromStr};
 
 use eyre::{bail, Context, ContextCompat, Report, Result};
+use once_cell::sync::OnceCell;
+use regex::Regex;
 
 pub fn run() -> Result<()> {
     let data = std::fs::read_to_string("inputs/day11.txt")?;
@@ -39,9 +41,12 @@ impl FromStr for Monkeys {
     }
 }
 
+static FACTORS: OnceCell<usize> = OnceCell::new();
 impl Monkeys {
     pub fn round(&mut self, with_relief: bool) {
-        let factors = self.0.iter().map(|m| m.div_test.0).product::<usize>();
+        let factors =
+            FACTORS.get_or_init(|| self.0.iter().map(|m| m.div_test.0).product::<usize>());
+
         for monkey in &self.0 {
             while let Some(Item(worry_level)) = &monkey.pop_item() {
                 let mut new = monkey.operation.eval(*worry_level);
@@ -168,6 +173,7 @@ impl Operation {
     }
 }
 
+static REGEX: OnceCell<Regex> = OnceCell::new();
 impl FromStr for Operation {
     type Err = Report;
 
@@ -176,7 +182,9 @@ impl FromStr for Operation {
             .strip_prefix("  Operation: new = ")
             .context("Invalid operation")?;
 
-        let re = regex::Regex::new(r"(.*) (\+|\*) (.*)").unwrap();
+        let re = REGEX
+            .get_or_try_init(|| Regex::new(r"(.*) (\+|\*) (.*)"))
+            .unwrap();
         let matches = re.captures(line).unwrap();
         let lhs = matches
             .get(1)
