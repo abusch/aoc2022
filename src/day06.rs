@@ -3,7 +3,7 @@ use std::collections::HashSet;
 use eyre::Result;
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day6.txt")?;
+    let data = std::fs::read_to_string("inputs/day06.txt")?;
 
     let bytes = data.as_bytes();
     let index = start_of_packet(bytes);

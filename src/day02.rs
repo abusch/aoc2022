@@ -103,7 +103,7 @@ impl TryFrom<u8> for Outcome {
 }
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day2.txt")?;
+    let data = std::fs::read_to_string("inputs/day02.txt")?;
     let letters = data
         .lines()
         .map(|line| {

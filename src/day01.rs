@@ -3,7 +3,7 @@ use std::num::ParseIntError;
 use eyre::Result;
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day1.txt")?;
+    let data = std::fs::read_to_string("inputs/day01.txt")?;
 
     let (mut calories, _) =
         data.lines()

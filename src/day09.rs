@@ -3,7 +3,7 @@ use std::{collections::HashSet, ops::Sub, str::FromStr};
 use eyre::{eyre, Report, Result};
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day9.txt")?;
+    let data = std::fs::read_to_string("inputs/day09.txt")?;
     let moves = data.parse::<Moves>()?;
 
     let mut grid = Grid::<1>::new();

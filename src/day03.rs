@@ -3,7 +3,7 @@ use std::collections::HashSet;
 use eyre::Result;
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day3.txt")?;
+    let data = std::fs::read_to_string("inputs/day03.txt")?;
 
     let mut common_items = Vec::new();
     for line in data.lines() {

@@ -2,7 +2,7 @@ use eyre::Result;
 use itertools::Itertools;
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day8.txt")?;
+    let data = std::fs::read_to_string("inputs/day08.txt")?;
     let forest = Forest::<99, 99>::new(&data);
 
     let count = forest.num_trees_visible();

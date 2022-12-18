@@ -49,7 +49,7 @@ impl Display for Stacks {
 }
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day5.txt")?;
+    let data = std::fs::read_to_string("inputs/day05.txt")?;
 
     // Parse initial stacks configuration
     let mut orig = Stacks::default();

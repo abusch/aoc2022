@@ -3,7 +3,7 @@ use std::ops::RangeInclusive;
 use eyre::{ContextCompat, Result};
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day4.txt")?;
+    let data = std::fs::read_to_string("inputs/day04.txt")?;
 
     let range_pairs = data.lines().map(parse_ranges).collect::<Result<Vec<_>>>()?;
 

@@ -6,7 +6,7 @@ use std::{
 use eyre::Result;
 
 pub fn run() -> Result<()> {
-    let data = std::fs::read_to_string("inputs/day7.txt")?;
+    let data = std::fs::read_to_string("inputs/day07.txt")?;
 
     let mut shell = Shell::new();
     for line in data.lines() {
